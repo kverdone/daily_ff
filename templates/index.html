@@ -10,6 +10,7 @@
 {% for post in posts %}
   <strong>Title:</strong> {{ post.title }} <br>
   <strong>Post:</strong> {{ post.body }} <br>
+  <strong>Author:</strong> {{ post.user.username }} <br>
 <br>
 {% endfor %}
 
