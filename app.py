@@ -1,12 +1,18 @@
 # Import the necessary items from flask
 from flask import Flask, render_template, redirect, url_for, request, session, flash
 from functools import wraps
+from flask.ext.sqlalchemy import SQLAlchemy
 
 # Create the application instance
 app = Flask(__name__)
 
-# Config's secret key
-app.secret_key = 'very_secure_key'
+import os
+app.config.from_object(os.environ['APP_SETTINGS'])
+#print os.environ['APP_SETTINGS']
+
+db = SQLAlchemy(app)
+
+from models import *
 
 # Decorator to require login to view a page
 def login_required(f):
@@ -23,7 +29,8 @@ def login_required(f):
 @app.route('/')
 @login_required
 def home():
-  return render_template('index.html')
+  posts = db.session.query(Post).all()
+  return render_template('index.html', posts=posts)
 
 
 @app.route('/welcome')
@@ -53,4 +60,4 @@ def logout():
 
 
 if __name__ == '__main__':
-  app.run(debug=True)
+  app.run()
