@@ -1,20 +1,18 @@
-from flask import Flask
+from flask import Flask, render_template
+
 
 app = Flask(__name__)
 
-app.config['DEBUG'] = True
 
 @app.route('/')
-def index():
-    return 'Index Page'
+def home():
+  return 'Hello, world!'
 
-@app.route('/hello')
-def hello():
-    return 'Hello World!'
 
-@app.route('/week/<week_id>')
-def schedule(week_id):
-    return 'Schedule for week {}'.format(week_id)
+@app.route('/welcome')
+def welcome():
+  return render_template('welcome.html')
+
 
 if __name__ == '__main__':
-    app.run()
+  app.run(debug=True)
