@@ -1,4 +1,4 @@
-from daily_ff import app
+from app import app
 import unittest
 
 
