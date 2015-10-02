@@ -1,11 +1,15 @@
 from app import db
-from models import Post
+from models import Game
 
 db.create_all()
 
-db.session.add(Post('Good', 'This is good.'))
-db.session.add(Post('App', 'Making an app!'))
-db.session.add(Post('Postgres', 'Now we are running with postgres'))
-
+db.session.add(Game('Thursday', 'HOU', 'DAL', False))
+db.session.add(Game('Morning', 'GB','CHI', False))
+db.session.add(Game('Morning', 'OAK','SF', False))
+db.session.add(Game('Afternoon', 'IND','NE', False))
+db.session.add(Game('Afternoon', 'BUF','NYJ', False))
+db.session.add(Game('Night', 'NYG','MIN', False))
+db.session.add(Game('Night', 'ATL','SD', False))
+db.session.add(Game('Monday', 'SEA','NO', False))
 
 db.session.commit()

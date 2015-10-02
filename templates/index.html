@@ -6,12 +6,25 @@
 <br>
 <p>Click <a href="/logout">here</a> to logout.</p>
 <br>
-<h3>Posts:</h3>
-{% for post in posts %}
-  <strong>Title:</strong> {{ post.title }} <br>
-  <strong>Post:</strong> {{ post.body }} <br>
-  <strong>Author:</strong> {{ post.user.username }} <br>
-<br>
-{% endfor %}
+<h3>Games:</h3>
+<table border="1" style="width:50%">
+    <tr>
+        <td>Time Slot</td>
+        <td>Away</td>
+        <td>@</td>
+        <td>Home</td>
+    </tr>
+    {% for game in games %}
+    <tr>
+        <td>{{ game.time_slot }}</td>
+        <td>{{ game.away_team }}</td>
+        <td>@</td>
+        <td>{{ game.home_team }}</td>
+    </tr>  
+    {% endfor %}
+</table>
+
 
 {% endblock %}
+
+
